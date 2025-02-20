@@ -8,13 +8,21 @@ bibliography: references.bib
 ## Uncertainty in a specific spatial data acquisition sensor platform (LiDAR)
 > - 特定空间数据获取传感器平台（如遥感、LiDAR等）中的不确定性。(e.g., remote sensing, LiDAR, etc.)
 
+
+LiDAR 技术通过非接触式采集数据，可以在极短的时间内获取大量带有高精度三维坐标的数据点（point clouds）。从 Laser 光源特性、搭载平台、目标应用等角度对 Laser Scanning 系统进行粗略分类，可大致分为机载激光扫描系统（ALS）、手持激光扫描设备（MLS）及地面激光扫描系统（TLS）三类。
+
+所生成的点云数据仅仅是一些列带有坐标信息的非结构化的数据结构的点。这种非结构化的数据应用场景有限，例如不能做进一步的物理模拟（诸如流场模拟、碰撞检测）等。往往需要进一步算法处理才能得到人们常用的带有连续表面的三维模型。这种处理过程中，不可避免的会引入一些误差，这些误差可能来自于传感器本身的误差、传感器平台的时间同步误差、传感器外参标定误差、LiDAR测距噪声与扫描角分辨率误差等。这些误差会对最终的三维模型的精度产生影响，因此需要进行不确定性的建模和分析。
+
+![Figure 1.1 Different Laser Scanning Platforms](./imgs/1.png)
+> a) Terrestrial Laser Scanning (TLS) b) Airborne Laser Scanning (ALS) c) Mobile Laser Scanning (MLS)
+
 1. [@10138602]
 论文核心围绕**多LiDAR系统的不确定性建模**展开：
 - **时间不确定性**：提出连续时间IMU插值+B样条轨迹建模，解决多LiDAR异步采样导致的时序错位问题（对应选题中"传感器平台的时间同步误差"）
 - **空间不确定性**：通过点级协方差传播模型，量化LiDAR点云在坐标系转换中的几何误差（对应"传感器外参标定误差"）
 - **量测不确定性**：融合点云距离、采集时间戳、IMU状态协方差，建立动态点云置信度模型（对应"LiDAR测距噪声与扫描角分辨率误差"）
 
-2. [@HOPKINSON20081168]
+1. [@HOPKINSON20081168]
 **契合点分析**：  
 - **LiDAR测量误差来源**：  
   文章详细分析了机载LiDAR在森林高度生长监测中的不确定性来源，包括：  
