@@ -1,5 +1,9 @@
 # LSGI547 Advanced Geographic Information Systems
 
+```bash
+cd Assignment1
+pandoc 24037665G_PANZhiqing_assign1.md -o 24037665G_PANZhiqing_assign1.docx --citeproc --csl=apa.csl
+```
 
 ## Teaching Staffs
 
